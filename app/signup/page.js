@@ -1,12 +1,15 @@
 'use client';
 
+import { Suspense } from 'react';
+
+
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { signup } from '@/utils/auth';
 import { api } from '@/utils/api';
 
-export default function SignupPage() {
+function SignupContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [name, setName] = useState('');
@@ -241,5 +244,13 @@ export default function SignupPage() {
                 </div>
             </div>
         </div>
+        
     );
+}
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div className="text-white text-center">Loading...</div>}>
+      <SignupContent />
+    </Suspense>
+  );
 }
