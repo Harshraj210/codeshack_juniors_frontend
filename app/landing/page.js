@@ -1,17 +1,33 @@
 import Link from 'next/link';
+import Particles from './Particles';
 
 export default function LandingPage() {
     return (
-        <div className="min-h-screen bg-x-black flex flex-col md:flex-row">
+        <div className="min-h-screen bg-x-black flex flex-col md:flex-row relative overflow-hidden">
+            <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+                <Particles
+                    particleColors={["#ffffff"]}
+                    particleCount={200}
+                    particleSpread={10}
+                    speed={0.1}
+                    particleBaseSize={100}
+                    moveParticlesOnHover
+                    alphaParticles={false}
+                    disableRotation={false}
+                    pixelRatio={1}
+                    className="pointer-events-none"
+                />
+            </div>
+
             {/* Left side - Logo */}
-            <div className="flex-1 flex items-center justify-center py-12 md:py-0">
+            <div className="flex-1 flex items-center justify-center py-12 md:py-0 relative z-10">
                 <div className="text-7xl sm:text-9xl md:text-[200px] lg:text-[300px] font-bold text-x-text">
                     CS
                 </div>
             </div>
 
             {/* Right side - Auth options */}
-            <div className="flex-1 flex items-center justify-center px-6 md:px-8 pb-8 md:pb-0">
+            <div className="flex-1 flex items-center justify-center px-6 md:px-8 pb-8 md:pb-0 relative z-10">
                 <div className="w-full max-w-md">
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-x-text mb-6 md:mb-8">Get answers now</h1>
 
